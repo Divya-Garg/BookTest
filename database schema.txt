@@ -1,0 +1,111 @@
+wrtest=> \d india_data;
+              Table "public.india_data"
+   Column   |            Type             | Modifiers 
+------------+-----------------------------+-----------
+ id         | bigint                      | 
+ client_id  | character varying(1024)     | 
+ session_id | character varying(1024)     | 
+ user_id    | character varying(1024)     | 
+ country    | character varying(1024)     | 
+ user_agent | character varying(4096)     | 
+ url        | character varying(1024)     | 
+ book_id    | character varying(1024)     | 
+ created_at | timestamp without time zone | 
+
+wrtest=> \d india;
+                 Table "public.india"
+   Column   |            Type             | Modifiers 
+------------+-----------------------------+-----------
+ id         | bigint                      | 
+ client_id  | character varying(1024)     | 
+ session_id | character varying(1024)     | 
+ user_id    | character varying(1024)     | 
+ country    | character varying(1024)     | 
+ user_agent | character varying(4096)     | 
+ url        | character varying(1024)     | 
+ book_id    | character varying(1024)     | 
+ created_at | timestamp without time zone | 
+
+wrtest=> \d sessionspagesread;
+           Table "public.sessionspagesread"
+   Column   |            Type             | Modifiers 
+------------+-----------------------------+-----------
+ created_at | timestamp without time zone | 
+ session_id | character varying(1024)     | 
+ count      | bigint                      | 
+
+wrtest=> \d log;
+                  Table "public.log"
+   Column   |            Type             | Modifiers 
+------------+-----------------------------+-----------
+ id         | bigint                      | not null
+ client_id  | character varying(1024)     | 
+ session_id | character varying(1024)     | 
+ user_id    | character varying(1024)     | 
+ country    | character varying(1024)     | 
+ user_agent | character varying(4096)     | 
+ url        | character varying(1024)     | 
+ book_id    | character varying(1024)     | 
+ created_at | timestamp without time zone | 
+Indexes:
+    "log_pkey" PRIMARY KEY, btree (id)
+    "book_id" btree (book_id)
+    "user_id" btree (user_id)
+Foreign-key constraints:
+    "book_log" FOREIGN KEY (book_id) REFERENCES book(uuid)
+
+wrtest=> \d logcopyday;
+              Table "public.logcopyday"
+   Column   |            Type             | Modifiers 
+------------+-----------------------------+-----------
+ id         | bigint                      | 
+ created_at | timestamp without time zone | 
+ session_id | character varying(1024)     | 
+ user_id    | character varying(1024)     | 
+ book_id    | character varying(1024)     | 
+
+wrtest=> \d book;
+                 Table "public.book"
+   Column   |            Type             | Modifiers 
+------------+-----------------------------+-----------
+ uuid       | character varying(255)      | not null
+ title      | character varying(255)      | 
+ author     | character varying(255)      | 
+ language   | character varying(255)      | 
+ createtime | timestamp without time zone | 
+ id         | integer                     | 
+Indexes:
+    "book_pkey" PRIMARY KEY, btree (uuid)
+    "book_id_idx" UNIQUE, btree (id)
+    "book_uuid_idx" UNIQUE, btree (uuid)
+Referenced by:
+    TABLE "log" CONSTRAINT "book_log" FOREIGN KEY (book_id) REFERENCES book(uuid)
+
+wrtest=> \d category;
+wrtest=> \d category;
+                                   Table "public.category"
+   Column    |          Type          |                       Modifiers                       
+-------------+------------------------+-------------------------------------------------------
+ id          | integer                | not null default nextval('category_id_seq'::regclass)
+ iconcolor   | character varying(6)   | 
+ iconurl     | character varying(255) | 
+ name        | character varying(255) | 
+ description | character varying(255) | 
+ parent_id   | integer                | 
+ listorder   | integer                | 
+Indexes:
+    "cat_id" UNIQUE, btree (id)
+    "category_id_idx" UNIQUE, btree (id)
+
+wrtest=> \d wr_user;
+                Table "public.wr_user"
+   Column   |            Type             | Modifiers 
+------------+-----------------------------+-----------
+ id         | character varying(256)      | not null
+ usergender | bigint                      | 
+ age        | bigint                      | 
+ createdat  | timestamp without time zone | 
+ updatedat  | timestamp without time zone | 
+Indexes:
+    "wr_user_pkey" PRIMARY KEY, btree (id)
+    "user_id1" UNIQUE, btree (id)

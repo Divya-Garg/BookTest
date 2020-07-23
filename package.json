@@ -1,0 +1,33 @@
+{
+  "name": "booktest",
+  "version": "1.0.0",
+  "description": "Test project for fetching book list for WorldReader",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Divya-Garg/BookTest.git"
+  },
+  "author": "Divya Garg Bansal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Divya-Garg/BookTest/issues"
+  },
+  "homepage": "https://github.com/Divya-Garg/BookTest#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4",
+    "pg": "^8.3.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.3.3",
+    "swagger-jsdoc": "^4.0.0",
+    "swagger-ui-express": "^4.1.4"
+  },
+  "devDependencies": {
+    "eslint": "^7.4.0"
+  }
+}

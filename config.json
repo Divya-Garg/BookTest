@@ -1,0 +1,10 @@
+{
+	"port": 3000,
+	"database": {
+		"dialect": "postgres",
+		"host":"wrtest.cgxehdr5uwty.eu-west-1.rds.amazonaws.com",
+		"username": "readonly",
+		"password": "dGUA1thwtznKWeqohU1lwl",
+		"name": "wrtest"
+	}
+}
